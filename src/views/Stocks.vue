@@ -9,18 +9,21 @@
         >
           <v-card class="mx-auto" max-width="344" color="primary">
             <v-card-text>
-              <div
-                class="text--white"
-              >
+              <div class="text--white">
                 {{ stock.Symbol }}
               </div>
               <div class="text--primary">
                 <br />
-                <p style="color: white !important; text-align: center !important;">{{ stocks[i] }}</p>
+                <p
+                  style="color: white !important; text-align: center !important"
+                >
+                  {{ stocks[i] }}
+                </p>
               </div>
             </v-card-text>
             <v-card-actions>
-              <v-dialog v-model="dialog" width="90%" overlay-opacity="0.5">
+              <v-btn text dark small to="stocks/aapl">Grafikon</v-btn>
+              <!-- <v-dialog v-model="dialog" width="90%" overlay-opacity="0.5">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
                     text
@@ -51,7 +54,7 @@
                     auto-draw
                   ></v-sparkline>
                 </template>
-              </v-dialog>
+              </v-dialog> -->
             </v-card-actions>
           </v-card>
         </div>
@@ -90,25 +93,10 @@ export default {
       "https://finnhub.io/api/v1/quote?token=bvcsnb748v6u47crk5n0&symbol=",
     stockPriceApi:
       "https://finnhub.io/api/v1/stock/candle?resolution=1&from=1605543327&to=1607469224&token=bvcsnb748v6u47crk5n0&symbol=AAPL",
-    stocks: [
-      "AAPL",
-      // "AMAZN",
-      // "IBM",
-      // "TSLA",
-      // "GOOGL",
-      // "PFE",
-      // "PEP",
-      // "FB",
-      // "EA",
-      // "FOXA",
-      // "DIS",
-      // "MCD",
-    ],
-    // stocks: ["AAPL", "PFE"],
+    stocks: ["AAPL"],
     stockData: [],
     stockPrices: [],
     pickedStock: null,
-    nesto: "andrej",
     dialog: false,
   }),
   methods: {

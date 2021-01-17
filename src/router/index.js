@@ -7,6 +7,7 @@ import Login from "@/components/Login";
 import Register from "@/components/Register";
 import Stocks from "@/views/Stocks";
 import StocksAdmin from "@/views/StocksAdmin";
+import Stock from "@/views/Stock";
 
 Vue.use(VueRouter);
 
@@ -40,8 +41,12 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/stocks/:id', 
+    name: "Stock",
+    component: Stock
   }
-
 ];
 
 const router = new VueRouter({
@@ -50,13 +55,13 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  const currentUser = firebase.auth().currentUser;
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+// router.beforeEach((to, from, next) => {
+//   const currentUser = firebase.auth().currentUser;
+//   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-  if (requiresAuth && !currentUser) next('login');
-  else if (!requiresAuth && currentUser) next('stocks');
-  else next();
-});
+//   if (requiresAuth && !currentUser) next('login');
+//   else if (!requiresAuth && currentUser) next('stocks');
+//   else next();
+// });
 
 export default router;
