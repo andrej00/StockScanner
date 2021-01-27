@@ -3,31 +3,49 @@
     <navbar />
     <v-container style="margin-top: 50px">
       <v-row>
-        <div
+        <v-col
+          cols="3"
           class="card-spacing"
           v-for="(stock, i) in stockData"
           :key="stock.symbol"
         >
-          <v-card class="mx-auto" max-width="344" color="primary">
+          <v-card class="mx-auto" color="primary">
             <v-card-text>
-              <div class="text--white" style="font-size: 32px">
-                {{ stock.Symbol }}
-                <!-- <span>{{ currentPrice }}</span> -->
-              </div>
               <div class="text--primary">
                 <br />
                 <p
-                  style="color: white !important; text-align: center !important; font-size: 24px;"
+                  style="
+                    color: white !important;
+                    text-align: center !important;
+                    font-size: 24px;
+                    padding: 10px 15px 15px 15px;
+                  "
                 >
                   {{ stocks[i] }}
+                </p>
+                <p
+                  style="
+                    text-align: center;
+                    color: white !important;
+                    padding: 0 30px;
+                  "
+                >
+                  {{ stock.c }}
                 </p>
               </div>
             </v-card-text>
             <v-card-actions style="text-align: center !important">
-              <v-btn text dark small @click="displayChart(i)">Grafikon</v-btn>
+              <v-btn
+                style="margin: 0 auto"
+                text
+                dark
+                small
+                @click="displayChart(i)"
+                >Grafikon</v-btn
+              >
             </v-card-actions>
           </v-card>
-        </div>
+        </v-col>
       </v-row>
     </v-container>
   </v-app>
@@ -43,7 +61,7 @@ export default {
   components: { Navbar },
   name: "Stocks",
   data: () => ({
-    currentPrice: [],
+    currentPrice: 0,
     stocks: ["AAPL", "PFE", "TSLA", "GOOGL", "MSFT", "MRNA"],
     stockData: [],
     stockPrices: [],
@@ -60,16 +78,17 @@ export default {
       this.stocks.map((stock) => {
         this.axios.get(this.$stockInfoApi + stock).then((response) => {
           this.stockData.push(response.data);
+          console.log(response.data);
         });
       });
     },
     displayChart(clickedStock) {
       this.$router.push("stocks/" + this.stocks[clickedStock]);
-    }
+    },
   },
   computed: {
     ...mapGetters(["getUser", "isUserAuth"]),
-    getThePrice: function () {
+    getThePrice() {
       console.log(this);
       return this.currentPrice;
     },
@@ -83,7 +102,7 @@ export default {
   created() {
     this.getStockInfo();
 
-    const socket = new WebSocket(this.$webSocket);
+    // const socket = new WebSocket(this.$webSocket);
 
     // socket.addEventListener("open", function (event) {
     //   socket.send(JSON.stringify({ type: "subscribe", symbol: "AAPL" }));
@@ -94,8 +113,6 @@ export default {
     //   this.currentPrice = data.data[0].p;
     //   console.log(this.currentPrice);
     // });
-
-
   },
 };
 </script>

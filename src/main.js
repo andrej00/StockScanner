@@ -7,7 +7,6 @@ import vuetify from './plugins/vuetify';
 import TradingVue from 'trading-vue-js';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-// import { firestorePlugin } from 'vuefire'
 
 const apiToken = 'c088o2748v6plm1egchg';
 
@@ -18,7 +17,6 @@ Vue.prototype.$specificStockData = `https://finnhub.io/api/v1/stock/candle?&reso
 Vue.use(VueAxios, axios)
 
 Vue.use(TradingVue);
-// Vue.use(VueFire)
 
 Vue.config.productionTip = false
 
