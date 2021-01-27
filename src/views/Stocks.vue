@@ -2,6 +2,7 @@
   <v-app>
     <navbar />
     <v-container style="margin-top: 50px">
+      {{ this.getThePrice }}
       <v-row>
         <v-col
           cols="3"
@@ -102,17 +103,17 @@ export default {
   created() {
     this.getStockInfo();
 
-    // const socket = new WebSocket(this.$webSocket);
+    const socket = new WebSocket(this.$webSocket);
 
-    // socket.addEventListener("open", function (event) {
-    //   socket.send(JSON.stringify({ type: "subscribe", symbol: "AAPL" }));
-    // });
+    socket.addEventListener("open", function (event) {
+      socket.send(JSON.stringify({ type: "subscribe", symbol: "AAPL" }));
+    });
 
-    // socket.addEventListener("message", function (event) {
-    //   let data = JSON.parse(event.data);
-    //   this.currentPrice = data.data[0].p;
-    //   console.log(this.currentPrice);
-    // });
+    socket.addEventListener("message", function (event) {
+      let data = JSON.parse(event.data);
+      this.currentPrice = data.data[0].p;
+      console.log(this.currentPrice);
+    });
   },
 };
 </script>

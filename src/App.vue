@@ -2,13 +2,13 @@
   <div id="app">
     <!-- <navbar /> -->
     <!-- <v-container> -->
-      <section v-if="isUserAuth" class="section">
+      <!-- <section v-if="isUserAuth" class="section"> -->
         <!-- <div class="columns">
         <div class="column is-half is-offset-one-quarter">
           Welcome {{ getUser.email }}
         </div>
       </div> -->
-      </section>
+      <!-- </section> -->
       <section>
         <div>
           <router-view />
