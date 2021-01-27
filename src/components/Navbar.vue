@@ -14,10 +14,12 @@
             v-for="button in navItems"
             :to="button.to"
             :key="button.name"
-            >{{ button.text }}</v-btn>
+            >{{ button.text }}</v-btn
+          >
         </template>
 
         <template v-if="isUserAuth">
+          <v-btn text to="/stocks">Početna</v-btn>
           <v-menu bottom min-width="200px" rounded offset-y>
             <template v-slot:activator="{ on }">
               <v-btn icon x-large v-on="on">
@@ -38,6 +40,10 @@
                   </p>
                   <v-divider class="my-3"></v-divider>
                   <v-btn depressed rounded text>Postavke</v-btn>
+                  <v-divider class="my-3"></v-divider>
+                  <v-btn depressed rounded text to="/portfolio"
+                    >Portfolio</v-btn
+                  >
                   <v-divider class="my-3"></v-divider>
                   <v-btn depressed rounded text @click="signOut"
                     >Odjavi se</v-btn

@@ -1,11 +1,21 @@
 import firebase from "firebase/app";
 import router from '../router/index.js'
+import { db } from "../plugins/firebase";
 
 const actions = {
   authAction({ commit }) {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        commit("setUser", user);
+        db.collection("users").doc(user.uid).get().then(function (doc) {
+          if (doc.exists) {
+            user.database = doc.data();
+            commit("setUser", user);
+          } else {
+            console.log("No such document!");
+          }
+        }).catch(function (error) {
+          console.log("Error getting document:", error);
+        });
       } else {
         commit("setUser", null);
       }
@@ -15,12 +25,20 @@ const actions = {
     firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
-      .then(function(result) {
+      .then(function (result) {
+        db.collection("users").doc(result.user.uid).set({
+          name: payload.displayName,
+          email: result.user.email,
+          image: "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
+          role: "user",
+          portfolio: {},
+          balanceUSD: 1000,
+        })
         return result.user.updateProfile({
           displayName: payload.displayName,
         });
       })
-      .then(function() {
+      .then(function () {
         router.push("stocks");
       })
       .catch(error => {
@@ -31,9 +49,7 @@ const actions = {
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
-      .then(function() {
-        console.log("getters: ");
-        console.log(getters);
+      .then(function () {
         router.push("stocks");
       })
       .catch(error => {
@@ -47,7 +63,7 @@ const actions = {
       .then(() => {
         commit("setUser", null);
       })
-      .then(function() {
+      .then(function () {
         router.push("login");
       })
       .catch(error => {

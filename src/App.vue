@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <navbar />
-    <v-container>
+    <!-- <navbar /> -->
+    <!-- <v-container> -->
       <section v-if="isUserAuth" class="section">
         <!-- <div class="columns">
         <div class="column is-half is-offset-one-quarter">
@@ -14,7 +14,7 @@
           <router-view />
         </div>
       </section>
-    </v-container>
+    <!-- </v-container> -->
   </div>
 </template>
 <script>
@@ -38,3 +38,8 @@ export default {
   },
 };
 </script>
+<style>
+#app, body, html {
+  background-color: #EEEEEE;
+}
+</style>

@@ -2,12 +2,15 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import firebase from 'firebase/app';
 import "firebase/auth"
+import actions from "../store/actions.js";
+import getters from "../store/getters.js";
 
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 import Stocks from "@/views/Stocks";
 import StocksAdmin from "@/views/StocksAdmin";
 import Stock from "@/views/Stock";
+import Portfolio from "@/views/Portfolio";
 
 Vue.use(VueRouter);
 
@@ -46,6 +49,14 @@ const routes = [
     path: '/stocks/:id', 
     name: "Stock",
     component: Stock
+  },
+  {
+    path: "/portfolio",
+    name: "Portfolio",
+    component: Portfolio,
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
 
@@ -55,13 +66,16 @@ const router = new VueRouter({
   routes
 });
 
-// router.beforeEach((to, from, next) => {
-//   const currentUser = firebase.auth().currentUser;
-//   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+router.beforeEach((to, from, next) => {
+  // console.log(getters);
+  // console.log(actions.signOutAction);
+  if (getters.getUser && (to.fullPath == "/login" || to.fullPath == "/register")) {
+    // actions.signOutAction;
+    // this.actions.dispatch('signOutAction')
 
-//   if (requiresAuth && !currentUser) next('login');
-//   else if (!requiresAuth && currentUser) next('stocks');
-//   else next();
-// });
+    // console.log('fpeiwuhfewpiufhewpfuwehfpewuh')
+  }
+  next();
+});
 
 export default router;

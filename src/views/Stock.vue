@@ -1,30 +1,76 @@
 <template>
-  <v-app>
-    <v-container style="margin-top: 50px" d-flex justify-center mb-6>
-      <trading-vue :data="this.$data" style="text-align: center"></trading-vue>
-    </v-container>
-          <v-btn @click="nesto">KLIKNI MEEEEE</v-btn>
-
-  </v-app>
+  <div>
+    <trading-vue
+      :data="chartData"
+      :width="width"
+      :height="height"
+      :title-txt="stockName"
+    >
+    </trading-vue>
+    <v-btn to="/stocks">NATRAG</v-btn>
+    <v-btn @click="buy">KUPI</v-btn>
+    <v-btn>PRODAJ</v-btn>
+  </div>
 </template>
-
 <script>
+import { db } from "../plugins/firebase";
+
 export default {
-  name: "Stock",
-  data: () => ({
-    ohlcv: [
-      [1551128400000, 33, 37.1, 14, 14, 196],
-      [1551132000000, 13.7, 30, 6.6, 30, 206],
-      [1551135600000, 29.9, 33, 21.3, 21.8, 74],
-      [1551139200000, 21.7, 25.9, 18, 24, 140],
-      [1551142800000, 24.1, 24.1, 24, 24.1, 29],
-    ],
-  }),
+  name: "MainChart",
+  data() {
+    return {
+      stockName: this.$route.params.id.toUpperCase(),
+      width: window.innerWidth - 10,
+      height: window.innerHeight - 1.7,
+      stockPrices: [],
+      chartData: {
+        chart: {
+          data: [],
+          // time ohlcv
+          settings: {},
+          grid: {},
+        },
+      },
+    };
+  },
   methods: {
+    buy() {},
     nesto() {
-      console.log(this.$route.params.id);
+      console.log(window.innerHeight);
+      console.log(window.innerWidth - 10);
     },
+    getStockPrice() {
+      const self = this;
+      const from = parseInt(new Date().getTime() / 1000) - 62000000;
+      const api = this.$specificStockData + self.stockName;
+      this.axios.get(api).then((response) => {
+        this.stockPrices.push(response.data);
+        console.log(this.stockPrices[0]);
+
+        for (let i = 0; i < this.stockPrices[0].c.length; i++) {
+          this.chartData.chart.data.push([
+            // because time in api has 10 digits, and chart requires 13 digits
+            this.stockPrices[0].t[i] * 1000,
+            this.stockPrices[0].o[i],
+            this.stockPrices[0].h[i],
+            this.stockPrices[0].l[i],
+            this.stockPrices[0].c[i],
+            // this.stockPrices[0].v[i],
+          ]);
+        }
+      });
+    },
+  },
+  mounted() {
+    window.onresize = () => {
+      this.width = window.innerWidth - 10;
+      this.height = window.innerHeight - 1.7;
+    };
+  },
+  created() {
+    this.getStockPrice();
   },
 };
 </script>
-
+<style>
+</style>

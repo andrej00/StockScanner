@@ -1,4 +1,6 @@
 import firebase from "firebase/app";
+import 'firebase/firestore';
+// import 'firebase/firestore'
 
 // Import needed firebase modules
 import "firebase/auth";
@@ -10,10 +12,12 @@ var firebaseConfig = {
   projectId: "stockscanner-c8675",
   storageBucket: "stockscanner-c8675.appspot.com",
   messagingSenderId: "1015129863089",
-  appId: "1:1015129863089:web:39af5bcd78881059000390"
+  appId: "1:1015129863089:web:39af5bcd78881059000390",
+  databaseURL: "https://stockscanner-c8675-default-rtdb.firebaseio.com/",
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 firebase.getCurrentUser = () => {
   return new Promise((resolve, reject) => {
@@ -24,3 +28,4 @@ firebase.getCurrentUser = () => {
   }
 )};
 
+export const db = firebaseApp.firestore();
