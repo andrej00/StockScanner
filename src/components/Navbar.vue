@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <div>
-      <v-app-bar color="primary" dense dark>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar color="primary" dense>
+        <v-app-bar-nav-icon color="secondary"></v-app-bar-nav-icon>
 
-        <v-toolbar-title>StockScanner</v-toolbar-title>
+        <v-toolbar-title class="secondary--text">StockScanner</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
@@ -19,12 +19,15 @@
         </template>
 
         <template v-if="isUserAuth">
-          <v-btn text to="/stocks">Početna</v-btn>
-          <v-menu bottom min-width="200px" rounded offset-y>
+          <v-btn text to="/stocks" class="secondary--text">Početna</v-btn>
+          <v-btn text to="/news" class="secondary--text">Vijesti</v-btn>
+          <v-btn text to="/portfolio" class="secondary--text">Portfolio</v-btn>
+          <v-btn v-if="getUser.database.role=='admin'" text to="/stocksadmin" class="secondary--text">Admin</v-btn>
+          <v-menu bottom min-width="200px" color="secondary" rounded offset-y>
             <template v-slot:activator="{ on }">
               <v-btn icon x-large v-on="on">
                 <v-avatar color="primary">
-                  <v-icon dark> mdi-account-circle </v-icon>
+                  <v-icon dark color="secondary"> mdi-account-circle </v-icon>
                 </v-avatar>
               </v-btn>
             </template>
@@ -40,10 +43,6 @@
                   </p>
                   <v-divider class="my-3"></v-divider>
                   <v-btn depressed rounded text>Postavke</v-btn>
-                  <v-divider class="my-3"></v-divider>
-                  <v-btn depressed rounded text to="/portfolio"
-                    >Portfolio</v-btn
-                  >
                   <v-divider class="my-3"></v-divider>
                   <v-btn depressed rounded text @click="signOut"
                     >Odjavi se</v-btn
@@ -69,8 +68,8 @@ export default {
         email: "john.doe@doe.com",
       },
       navItems: [
-        { text: "Login", to: "/login", icon: "sign-in-alt" },
-        { text: "Register", to: "/register", icon: "user-plus" },
+        { text: "Login", to: "login", icon: "sign-in-alt" },
+        { text: "Register", to: "register", icon: "user-plus" },
       ],
     };
   },

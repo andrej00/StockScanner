@@ -1,25 +1,37 @@
 import firebase from "firebase/app";
 import router from '../router/index.js'
 import { db } from "../plugins/firebase";
+import Vue from "vue";
+import Vuex from "vuex";
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+Vue.use(Vuex);
+
+Vue.use(VueAxios, axios);
 
 const actions = {
-  authAction({ commit }) {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        db.collection("users").doc(user.uid).get().then(function (doc) {
-          if (doc.exists) {
-            user.database = doc.data();
-            commit("setUser", user);
-          } else {
-            console.log("No such document!");
-          }
-        }).catch(function (error) {
-          console.log("Error getting document:", error);
-        });
-      } else {
-        commit("setUser", null);
-      }
-    });
+  authAction({ commit, dispatch }) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          db.collection("users").doc(user.uid).get().then(function (doc) {
+            if (doc.exists) {
+              user.database = doc.data();
+              commit("setUser", user);
+              resolve();
+            } else {
+              console.log("No such document!");
+            }
+          }).catch(function (error) {
+            console.log("Error getting document:", error);
+            reject();
+          });
+        } else {
+          commit("setUser", null);
+        }
+      });
+    })
   },
   signUpAction({ commit }, payload) {
     firebase
