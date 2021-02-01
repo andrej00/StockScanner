@@ -51,7 +51,7 @@
           <v-btn color="primary" @click.prevent="validate()">
             Registriraj se
           </v-btn>
-          <v-btn text to="/"> Natrag </v-btn>
+          <v-btn text to="/home"> Natrag </v-btn>
         </v-stepper-content>
       </v-stepper>
     </v-container>

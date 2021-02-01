@@ -21,10 +21,10 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '*',
-    redirect: '/'
+    redirect: '/home'
   },
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
   },
