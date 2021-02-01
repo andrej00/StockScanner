@@ -7,7 +7,6 @@ import vuetify from './plugins/vuetify';
 import TradingVue from 'trading-vue-js';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-import { sync } from 'vuex-router-sync';
 import { DateTime } from 'luxon';
 
 const apiToken = 'c0amnqv48v6sc0grm1mg';
