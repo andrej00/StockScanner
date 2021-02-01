@@ -12,14 +12,12 @@ Vue.use(VueAxios, axios);
 
 const actions = {
   authAction({ commit, dispatch }) {
-    return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           db.collection("users").doc(user.uid).get().then(function (doc) {
             if (doc.exists) {
               user.database = doc.data();
               commit("setUser", user);
-              resolve();
             } else {
               console.log("No such document!");
             }
@@ -31,7 +29,6 @@ const actions = {
           commit("setUser", null);
         }
       });
-    })
   },
   signUpAction({ commit }, payload) {
     firebase
@@ -62,7 +59,7 @@ const actions = {
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
       .then(function () {
-        router.push("stocks");
+        // router.push("stocks");
       })
       .catch(error => {
         commit("setError", error.message);

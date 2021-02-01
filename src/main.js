@@ -16,7 +16,6 @@ const apiToken = 'c0amnqv48v6sc0grm1mg';
 function timeInMillis() {
   return DateTime.local().ts;
 }
-
 Vue.prototype.$stockInfoApi = `https://finnhub.io/api/v1/quote?token=${apiToken}&symbol=`,
 Vue.prototype.$webSocket = `wss://ws.finnhub.io?token=${apiToken}`;
 Vue.prototype.$specificStockData = `https://finnhub.io/api/v1/stock/candle?&resolution=D&from=1405543327&to=${timeInMillis()}&token=${apiToken}&symbol=`

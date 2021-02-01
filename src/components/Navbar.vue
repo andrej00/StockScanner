@@ -10,6 +10,7 @@
 
         <template v-if="!isUserAuth">
           <v-btn
+          class="secondary--text"
             text
             v-for="button in navItems"
             :to="button.to"
@@ -68,8 +69,8 @@ export default {
         email: "john.doe@doe.com",
       },
       navItems: [
-        { text: "Login", to: "login", icon: "sign-in-alt" },
-        { text: "Register", to: "register", icon: "user-plus" },
+        { text: "Prijava", to: "login", icon: "sign-in-alt" },
+        { text: "Registracija", to: "register", icon: "user-plus" },
       ],
     };
   },

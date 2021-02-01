@@ -2,7 +2,26 @@
   <v-app>
     <navbar />
     <v-container style="margin-top: 50px">
-      <v-row>
+      <v-row v-if="loading">
+        <v-col
+          lg="4"
+          md="6"
+          sm="12"
+          col
+          v-for="n in 10"
+          :key="n"
+          class="pa-3 d-flex flex-column"
+        >
+          <v-sheet class="pa-3" color="blue-grey lighten-5">
+            <v-skeleton-loader
+              class="mx-auto"
+              type="card"
+            ></v-skeleton-loader>
+          </v-sheet>
+        </v-col>
+      </v-row>
+
+      <v-row v-if="!loading">
         <v-col
           lg="4"
           md="6"
@@ -23,7 +42,7 @@
                     padding: 10px 15px 15px 15px;
                   "
                 >
-                  {{ stocks[i] }}
+                  {{ stocks[i].fullName }}
                 </p>
                 <p style="text-align: center; padding: 0 30px">
                   $ {{ stock.c }}
@@ -60,23 +79,53 @@ export default {
   data: () => ({
     currentPrice: 0,
     stocks: [
-      "AAPL",
-      "PFE",
-      "TSLA",
-      "GOOGL",
-      "MSFT",
-      "MRNA",
-      "GME",
-      "BB",
-      "NKE",
-      "MCD",
-      "KO",
+      {
+        fullName: "Apple",
+        symbol: "aapl",
+      },
+      {
+        fullName: "Pfeizer",
+        symbol: "pfe",
+      },
+      {
+        fullName: "McDonald's",
+        symbol: "mcd",
+      },
+      {
+        fullName: "Google",
+        symbol: "googl",
+      },
+      {
+        fullName: "Moderna",
+        symbol: "mrna",
+      },
+      {
+        fullName: "Tesla",
+        symbol: "tsla",
+      },
+      {
+        fullName: "IBM",
+        symbol: "ibm",
+      },
+      {
+        fullName: "Amazon",
+        symbol: "amzn",
+      },
+      {
+        fullName: "NVIDIA",
+        symbol: "nvda",
+      },
+      {
+        fullName: "Nike",
+        symbol: "nke",
+      },
     ],
     stockData: [],
     stockPrices: [],
     pickedStock: null,
     dialog: false,
     arrayPrice: [1],
+    loading: true,
   }),
   methods: {
     timeInMillis() {
@@ -84,16 +133,20 @@ export default {
     },
     getStockInfo() {
       const self = this;
+      this.loading = true;
       this.stocks.map((stock) => {
-        this.axios.get(this.$stockInfoApi + stock).then((response) => {
-          this.stockData.push(response.data);
-          // console.log(response.data);
-        });
+        this.axios
+          .get(this.$stockInfoApi + stock.symbol.toUpperCase())
+          .then((response) => {
+            this.stockData.push(response.data);
+          });
       });
+      this.loading = false;
       console.log(this.stockData);
     },
     displayChart(clickedStock) {
-      this.$router.push("stocks/" + this.stocks[clickedStock]);
+      console.log(this.stocks[clickedStock].symbol)
+      this.$router.push("stocks/" + this.stocks[clickedStock].symbol);
     },
   },
   computed: {
@@ -113,7 +166,9 @@ export default {
     // 1611878400  --
     // 1611998846  --> time in millis
     // console.log(this.timeInMillis());
-    this.getStockInfo();
+    const self = this;
+    setTimeout(function(){ self.getStockInfo(); }, 3000);
+    // this.getStockInfo();
     // console.log(typeof this.$store.getters.getUser);
 
     // const socket = new WebSocket(this.$webSocket);

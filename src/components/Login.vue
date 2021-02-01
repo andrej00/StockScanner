@@ -30,8 +30,8 @@
               </v-row>
             </v-container>
           </v-form>
-          <v-btn color="primary" @click.prevent="validate()"> Continue </v-btn>
-          <v-btn text> Cancel </v-btn>
+          <v-btn color="primary" @click.prevent="validate()"> Prijavi se </v-btn>
+          <v-btn text to="/"> Natrag </v-btn>
         </v-stepper-content>
       </v-stepper>
     </v-container>
