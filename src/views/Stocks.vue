@@ -65,7 +65,6 @@
     </v-container>
   </v-app>
 </template>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 
 <script>
 import Navbar from "../components/Navbar.vue";

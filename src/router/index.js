@@ -14,13 +14,19 @@ import Stock from "@/views/Stock";
 import Portfolio from "@/views/Portfolio";
 import News from "@/views/News";
 import Home from "@/views/Home";
+import Resume from "@/views/Resume";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '*',
-    redirect: '/stocks'
+    redirect: '/'
+  },
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
     path: "/login",
@@ -87,9 +93,12 @@ const routes = [
     }
   },
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "/resume",
+    name: "Resume",
+    component: Resume,
+    meta: {
+      title: 'Resume'
+    }
   }
 ];
 
@@ -104,10 +113,9 @@ router.beforeEach(function (to, from, next) {
     document.title = to.meta.title || 'StockScanner';
   });
 
-  console.log(to);
-
-
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.fullPath == "/resume") {
+    next();
+  } else if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!store.getters.isUserAuth) {
       next("/login");
     }
