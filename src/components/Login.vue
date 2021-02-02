@@ -31,7 +31,7 @@
             </v-container>
           </v-form>
           <v-btn color="primary" @click.prevent="validate()"> Prijavi se </v-btn>
-          <v-btn text to="/home"> Natragg </v-btn>
+          <v-btn text to="/home"> Natrag </v-btn>
         </v-stepper-content>
       </v-stepper>
     </v-container>

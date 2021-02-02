@@ -15,6 +15,7 @@ import Portfolio from "@/views/Portfolio";
 import News from "@/views/News";
 import Home from "@/views/Home";
 import Resume from "@/views/Resume";
+import UserProfile from "@/views/UserProfile";
 
 Vue.use(VueRouter);
 
@@ -98,6 +99,15 @@ const routes = [
     component: Resume,
     meta: {
       title: 'Resume'
+    }
+  },
+  {
+    path: "/userprofile",
+    name: "UserProfile",
+    component: UserProfile,
+    meta: {
+      title: 'Profil',
+      requiresAuth: true,
     }
   }
 ];

@@ -42,6 +42,7 @@ const actions = {
           role: "user",
           portfolio: {},
           balanceUSD: 1000,
+          id: result.user.uid,
         })
         return result.user.updateProfile({
           displayName: payload.displayName,
