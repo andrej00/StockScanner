@@ -109,16 +109,12 @@ export default {
       var docData = {
         name: this.name,
         image: this.imageUrl,
-        // balanceUSD: user.balanceUSD,
-        // email: user.email,
-        // role: user.role,
-        // portfolio: user.portfolio,
       };
-      console.log(this.getUser.uid);
       db.collection("users")
         .doc(this.getUser.uid)
         .update(docData)
         .then(function () {
+          // commit("setUser", user);
           console.log("Document successfully written!");
         });
     },

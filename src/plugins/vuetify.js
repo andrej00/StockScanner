@@ -9,7 +9,8 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: colors.pink.darken4, // #E53935
+        primary: '#6A1B9A'
+        , // #E53935
         secondary: "#fff",
         // secondary: colors.grey.lighten5, // #FFCDD2
         accent: colors.indigo.base, // #3F51B5
@@ -17,3 +18,6 @@ export default new Vuetify({
     },
   },
 });
+// #00695C - zelena
+// colors.pink.darken4
+// 009688 - teal

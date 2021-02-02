@@ -4,7 +4,7 @@
     <v-container style="margin-top: 30px">
       <h1 class="heading primary--text">PORTFOLIO</h1>
       <piechart />
-      <h3>Dostupno: ${{ getUser.database.balanceUSD }}</h3>
+      <h3 class="primary--text">Dostupno: ${{ getUser.database.balanceUSD }}</h3>
     </v-container>
   </v-app>
 </template>
