@@ -2,6 +2,14 @@
   <v-app>
     <navbar />
     <v-container>
+      <v-alert
+        v-model="alert"
+        border="left"
+        close-text="Zatvori"
+        color="primary"
+        dark
+        dismissible
+      >Uspješno ste dodali rolu admin</v-alert>
       <v-row>
         <v-col
           lg="4"
@@ -48,7 +56,7 @@
             </v-card-text> -->
 
             <v-card-actions style="float: right d-flex justify-space-around">
-              <v-btn depressed color="primary" @click="deleteUser(user)">
+              <v-btn depressed color="primary" @click="addAdmin(user)">
                 Dodaj ulogu admin
               </v-btn>
               <v-spacer></v-spacer>
@@ -72,6 +80,7 @@ export default {
   components: { Navbar },
   name: "Resume",
   data: () => ({
+    alert: false,
     users: [],
   }),
   methods: {
@@ -95,6 +104,20 @@ export default {
       console.log(removeIndex);
 
       db.collection("users").doc(user.id).delete();
+    },
+    addAdmin(user2) {
+      const self = this;
+      var docData = {
+        role: "admin",
+      };
+      db.collection("users")
+        .doc(user2.id)
+        .update(docData)
+        .then(function () {
+          // commit("setUser", user);
+          console.log("Document successfully written!");
+          self.alert = true;
+        });
     },
   },
   created() {
