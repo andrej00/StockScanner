@@ -40,7 +40,7 @@ const actions = {
           email: result.user.email,
           image: "https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png",
           role: "user",
-          portfolio: {},
+          portfolio: {aapl: 10, pfe: 3, tsla: 7},
           balanceUSD: 1000,
           id: result.user.uid,
         })
