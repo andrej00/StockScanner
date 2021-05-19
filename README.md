@@ -1,6 +1,6 @@
-# authentication
+# StockScanner
 
-https://keen-engelbart-9710cb.netlify.app/home
+https://dazzling-ardinghelli-ff2988.netlify.app
 
 ## Project setup
 ```
