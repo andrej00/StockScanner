@@ -83,42 +83,42 @@ export default {
         fullName: "Apple",
         symbol: "aapl",
       },
-      // {
-      //   fullName: "Pfeizer",
-      //   symbol: "pfe",
-      // },
-      // {
-      //   fullName: "McDonald's",
-      //   symbol: "mcd",
-      // },
-      // {
-      //   fullName: "Google",
-      //   symbol: "googl",
-      // },
-      // {
-      //   fullName: "Moderna",
-      //   symbol: "mrna",
-      // },
-      // {
-      //   fullName: "Tesla",
-      //   symbol: "tsla",
-      // },
-      // {
-      //   fullName: "IBM",
-      //   symbol: "ibm",
-      // },
-      // {
-      //   fullName: "Amazon",
-      //   symbol: "amzn",
-      // },
-      // {
-      //   fullName: "NVIDIA",
-      //   symbol: "nvda",
-      // },
-      // {
-      //   fullName: "Nike",
-      //   symbol: "nke",
-      // },
+      {
+        fullName: "Pfeizer",
+        symbol: "pfe",
+      },
+      {
+        fullName: "McDonald's",
+        symbol: "mcd",
+      },
+      {
+        fullName: "Google",
+        symbol: "googl",
+      },
+      {
+        fullName: "Moderna",
+        symbol: "mrna",
+      },
+      {
+        fullName: "Tesla",
+        symbol: "tsla",
+      },
+      {
+        fullName: "IBM",
+        symbol: "ibm",
+      },
+      {
+        fullName: "Amazon",
+        symbol: "amzn",
+      },
+      {
+        fullName: "NVIDIA",
+        symbol: "nvda",
+      },
+      {
+        fullName: "Nike",
+        symbol: "nke",
+      },
     ],
     stockData: [],
     stockPrices: [],
