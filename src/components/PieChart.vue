@@ -61,11 +61,8 @@ export default {
     return {};
   },
   mounted() {
-    console.log(this.getUser);
     const length = Object.keys(this.getUser.database.portfolio).length;
     const colors = colorArray.slice(0, length + 1);
-    console.log('fpoewihfewpuh');
-    console.log(this.getUser.database.balanceUSD);
     this.renderChart(
       {
         labels: Object.keys(this.getUser.database.portfolio),

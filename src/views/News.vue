@@ -43,8 +43,6 @@ export default {
     getNews() {
       this.axios.get(this.$newsApi).then((response) => {
         this.news = response.data;
-        console.log(this.news[0]);
-        // console.log(DateTime.fromSeconds(response.data[0].datetime));
       });
     },
     getTime(time) {

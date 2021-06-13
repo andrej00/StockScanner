@@ -7,6 +7,7 @@
           lg="4"
           md="6"
           sm="12"
+          xs="12"
           col
           v-for="n in 10"
           :key="n"
@@ -82,42 +83,42 @@ export default {
         fullName: "Apple",
         symbol: "aapl",
       },
-      {
-        fullName: "Pfeizer",
-        symbol: "pfe",
-      },
-      {
-        fullName: "McDonald's",
-        symbol: "mcd",
-      },
-      {
-        fullName: "Google",
-        symbol: "googl",
-      },
-      {
-        fullName: "Moderna",
-        symbol: "mrna",
-      },
-      {
-        fullName: "Tesla",
-        symbol: "tsla",
-      },
-      {
-        fullName: "IBM",
-        symbol: "ibm",
-      },
-      {
-        fullName: "Amazon",
-        symbol: "amzn",
-      },
-      {
-        fullName: "NVIDIA",
-        symbol: "nvda",
-      },
-      {
-        fullName: "Nike",
-        symbol: "nke",
-      },
+      // {
+      //   fullName: "Pfeizer",
+      //   symbol: "pfe",
+      // },
+      // {
+      //   fullName: "McDonald's",
+      //   symbol: "mcd",
+      // },
+      // {
+      //   fullName: "Google",
+      //   symbol: "googl",
+      // },
+      // {
+      //   fullName: "Moderna",
+      //   symbol: "mrna",
+      // },
+      // {
+      //   fullName: "Tesla",
+      //   symbol: "tsla",
+      // },
+      // {
+      //   fullName: "IBM",
+      //   symbol: "ibm",
+      // },
+      // {
+      //   fullName: "Amazon",
+      //   symbol: "amzn",
+      // },
+      // {
+      //   fullName: "NVIDIA",
+      //   symbol: "nvda",
+      // },
+      // {
+      //   fullName: "Nike",
+      //   symbol: "nke",
+      // },
     ],
     stockData: [],
     stockPrices: [],
@@ -141,17 +142,14 @@ export default {
           });
       });
       this.loading = false;
-      console.log(this.stockData);
     },
     displayChart(clickedStock) {
-      console.log(this.stocks[clickedStock].symbol)
       this.$router.push("stocks/" + this.stocks[clickedStock].symbol);
     },
   },
   computed: {
     ...mapGetters(["getUser", "isUserAuth"]),
     getThePrice() {
-      console.log(this);
       return this.currentPrice;
     },
   },

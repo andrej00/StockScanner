@@ -119,13 +119,13 @@ export default {
       ];
 
       if (this.getUser.database.balanceUSD > currentPrice * this.amount) {
-        const update = {};
-        console.log(currentPrice * this.amount);
-        update[`portfolio.${this.stockName}`] = this.amount;
+        const updatePortfolio = {};
+        updatePortfolio[`portfolio.${this.stockName.toLowerCase()}`] = parseFloat(this.amount) + this.getUser.database.portfolio[this.stockName.toLowerCase()];
+        this.getUser.database.portfolio[this.stockName.toLowerCase()] += parseFloat(this.amount);
 
         db.collection("users")
           .doc(this.getUser.uid)
-          .update(update)
+          .update(updatePortfolio)
           .then(function () {
             // commit("setUser", user);
             console.log("Document successfully written!");
@@ -133,16 +133,18 @@ export default {
 
         const balance = this.getUser.database.balanceUSD - currentPrice * this.amount;
         this.available = balance;
+
         db.collection("users")
           .doc(this.getUser.uid)
           .update({
-            balanceUSD: balance
+            balanceUSD: balance,
           })
           .then(function () {
             // commit("setUser", user);
             console.log("Document successfully written!");
           });
         this.successAlert = true;
+
       } else {
         console.log("nemate dovoljno novca");
         this.errorAlert = true;
