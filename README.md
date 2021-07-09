@@ -1,6 +1,6 @@
 # StockScanner
 
-https://dazzling-ardinghelli-ff2988.netlify.app
+https://vigorous-brown-cca2a5.netlify.app/
 
 ## Project setup
 ```
