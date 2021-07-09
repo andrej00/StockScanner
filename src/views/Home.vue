@@ -2,7 +2,7 @@
   <v-app>
     <v-parallax
       dark
-      src="https://www.alphavantage.co/static/img/intro-bg.jpg"
+      src="https://www.alphavantage.co/static/img/intro-bg.jpeg"
       id="parallax-img"
     >
       <div>
