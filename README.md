@@ -1,6 +1,6 @@
 # StockScanner
 
-https://youthful-kepler-b495da.netlify.app
+### https://andrej00.github.io/StockScanner/home
 
 ## Project setup
 ```
