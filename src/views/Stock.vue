@@ -7,7 +7,7 @@
       style="background-color: #4a148c !important"
       dark
       dismissible
-      >Uspješno ste kupili dionice</v-alert
+      >Successfully "bought"</v-alert
     >
     <v-alert
       v-model="errorAlert"
@@ -16,7 +16,7 @@
       style="background-color: #b71c1c !important"
       dark
       dismissible
-      >Nemate dovoljno novca za kupnju dionice</v-alert
+      >Low balance</v-alert
     >
 
     <v-card class="mx-auto" max-width="444">
@@ -27,12 +27,12 @@
           outlined
           v-model="amount"
         ></v-text-field>
-        <p>Dostupno: {{ available }}</p>
+        <p>Available: {{ available }}</p>
       </v-card-text>
       <v-card-actions>
-        <v-btn text color="deep-purple accent-4"> Prodaj </v-btn>
+        <v-btn text color="deep-purple accent-4"> Sell </v-btn>
         <v-spacer></v-spacer>
-        <v-btn text color="deep-purple accent-4" @click="buy()"> Kupi </v-btn>
+        <v-btn text color="deep-purple accent-4" @click="buy()"> Buy </v-btn>
       </v-card-actions>
     </v-card>
     <trading-vue

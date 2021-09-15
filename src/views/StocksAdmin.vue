@@ -9,7 +9,7 @@
         color="primary"
         dark
         dismissible
-      >Uspješno ste dodali rolu admin</v-alert>
+      >Successfully added role admin</v-alert>
       <v-row>
         <v-col
           lg="4"
@@ -57,11 +57,11 @@
 
             <v-card-actions style="float: right d-flex justify-space-around">
               <v-btn depressed color="primary" @click="addAdmin(user)">
-                Dodaj ulogu admin
+                Set role admin
               </v-btn>
               <v-spacer></v-spacer>
               <v-btn depressed color="error" @click="deleteUser(user)">
-                Izbriši
+                Delete
               </v-btn>
             </v-card-actions>
           </v-card>

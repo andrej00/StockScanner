@@ -12,14 +12,13 @@
 
             </v-card-text>
             <v-card-text class="secondary--text">
-                          <div class="date">{{ getTime(info.datetime) }}, {{ info.source }}</div>
-
+                <div class="date">{{ getTime(info.datetime) }}, {{ info.source }}</div>
             </v-card-text>
 
             <v-spacer></v-spacer>
             <v-card-actions>
               <v-btn text color="pink lighten-5" target="_blank" :href="info.url">
-                Saznaj više
+                More
               </v-btn>
             </v-card-actions>
           </v-card>

@@ -3,7 +3,7 @@
     <navbar />
     <v-container class="container">
       <v-stepper vertical>
-        <v-stepper-step step="1"> Upišite svoje podatke </v-stepper-step>
+        <v-stepper-step step="1"> Enter email and password </v-stepper-step>
 
         <v-stepper-content step="1">
           <v-form>
@@ -20,7 +20,7 @@
                 </v-col>
                 <v-col cols="12" sm="12" md="12">
                   <v-text-field
-                    label="Šifra"
+                    label="Password"
                     placeholder="******"
                     outlined
                     type="password"
@@ -30,8 +30,8 @@
               </v-row>
             </v-container>
           </v-form>
-          <v-btn color="primary" @click.prevent="validate()"> Prijavi se </v-btn>
-          <v-btn text to="/home"> Natrag </v-btn>
+          <v-btn color="primary" @click.prevent="validate()"> Login </v-btn>
+          <v-btn text to="/home"> Back </v-btn>
         </v-stepper-content>
       </v-stepper>
     </v-container>

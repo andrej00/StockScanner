@@ -25,8 +25,8 @@
           </template>
 
           <template v-if="isUserAuth">
-            <v-btn text to="/stocks" class="secondary--text">Početna</v-btn>
-            <v-btn text to="/news" class="secondary--text">Vijesti</v-btn>
+            <v-btn text to="/stocks" class="secondary--text">Home</v-btn>
+            <v-btn text to="/news" class="secondary--text">News</v-btn>
             <v-btn text to="/portfolio" class="secondary--text"
               >Portfolio</v-btn
             >
@@ -59,11 +59,11 @@
                     </p>
                     <v-divider class="my-3"></v-divider>
                     <v-btn depressed rounded text to="/userprofile"
-                      >Profil</v-btn
+                      >Profile</v-btn
                     >
                     <v-divider class="my-3"></v-divider>
                     <v-btn depressed rounded text @click="signOut"
-                      >Odjavi se</v-btn
+                      >Logout</v-btn
                     >
                   </div>
                 </v-list-item-content>
@@ -82,8 +82,8 @@
         :style="{ top: $vuetify.application.top + 'px', zIndex: 6 }"
       >
         <v-list dense>
-          <v-list-item to="/stocks" @click="drawer = false"> Početna </v-list-item>
-          <v-list-item to="/news" @click="drawer = false"> Vijesti </v-list-item>
+          <v-list-item to="/stocks" @click="drawer = false"> Home </v-list-item>
+          <v-list-item to="/news" @click="drawer = false"> News </v-list-item>
           
         </v-list>
       </v-navigation-drawer>

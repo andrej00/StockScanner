@@ -8,7 +8,7 @@
           <v-card-text>
             <v-text-field
               v-model="name"
-              label="Ime i prezime"
+              label="Name"
               placeholder="John Doe"
               outlined
               prepend-inner-icon="mdi-account"
@@ -24,7 +24,7 @@
 
             <v-text-field
               v-model="imageUrl"
-              label="Link na sliku"
+              label="Avatar image link"
               placeholder="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"
               outlined
               prepend-inner-icon="mdi-message-image-outline"
@@ -32,7 +32,7 @@
           </v-card-text>
           <v-divider class="mt-12"></v-divider>
           <v-card-actions>
-            <v-btn text to="/stocks"> Natrag </v-btn>
+            <v-btn text to="/stocks"> Back </v-btn>
             <v-spacer></v-spacer>
             <v-slide-x-reverse-transition>
               <v-tooltip left>
@@ -47,17 +47,17 @@
                     <v-icon>mdi-refresh</v-icon>
                   </v-btn>
                 </template>
-                <span>Osvježi formu</span>
+                <span>Refresh form</span>
               </v-tooltip>
             </v-slide-x-reverse-transition>
             <v-btn color="primary" text @click="submit">
-              Spremi promjene
+              Save changes
             </v-btn>
           </v-card-actions>
         </v-card>
         <div class="text-center mt-12">
           <v-btn rounded color="primary" dark @click="deleteProfile">
-            Izbriši svoj korisnički račun
+            Delete your account
           </v-btn>
         </div>
       </v-col>
