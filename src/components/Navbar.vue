@@ -103,8 +103,8 @@ export default {
         email: "john.doe@doe.com",
       },
       navItems: [
-        { text: "Prijava", to: "login", icon: "sign-in-alt" },
-        { text: "Registracija", to: "register", icon: "user-plus" },
+        { text: "Login", to: "login", icon: "sign-in-alt" },
+        { text: "Register", to: "register", icon: "user-plus" },
       ],
     };
   },
